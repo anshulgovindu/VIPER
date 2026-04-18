@@ -8,6 +8,7 @@ from scripts.mafft import mafft_local
 def main(l):
     # Parse args
     parser = argparse.ArgumentParser()
+    parser.add_argument("-o", type=str, required=True)
     parser.add_argument("-q", type=argparse.FileType("r"), required=False, default='query.fa')
     parser.add_argument("-d", type=argparse.FileType("r"), required=False, default='database.fa')
     parser.add_argument("-m", type=int, required=False, default=1)
@@ -24,7 +25,7 @@ def main(l):
 def output_alignments(hits, l, args):
     q = get_sequence(args.q)
     db = get_sequence(args.d)
-    with open("results/hits" + str(l) + ".txt", "w") as f:
+    with open(f"results/{args.o}.txt", "w") as f:
         for i1, i2, j1, j2 in hits:
             
             # Run respective alignment
