@@ -15,6 +15,7 @@ def align(target, query, sub_matrix_name="BLOSUM62"):
 
     return (top_score, top_alignment) # returns top score, top alignment
 
+'''
 def e_val(score, query_len, db_len, K=0.13, lam=0.318):
 
     search_space = query_len * db_len
@@ -29,3 +30,4 @@ def test():
     bit_score = align(target, query)[0]
     e_value = e_val(bit_score, len(query), len(target))
     print(e_value)
+'''

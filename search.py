@@ -3,20 +3,20 @@ import scripts.alignment.custom_alignment as custom_alignment
 import scripts.alignment.biopython_alignment as biopy
 import scripts.alignment.scikit_alignment as ska
 import scripts.generate_hits as generate_hits
-from scripts.mafft import mafft_local
+#from scripts.mafft import mafft_local
 
 def main(l):
     # Parse args
     parser = argparse.ArgumentParser()
-    parser.add_argument("-o", type=str, required=True)
-    parser.add_argument("-q", type=argparse.FileType("r"), required=False, default='query.fa')
-    parser.add_argument("-d", type=argparse.FileType("r"), required=False, default='database.fa')
-    parser.add_argument("-m", type=int, required=False, default=1)
-    parser.add_argument("-s", type=int, required=False, default=-2)
-    parser.add_argument("-i", type=int, required=False, default=-2)
-    parser.add_argument("-a", type=str, required=False, default='locAL')
-    parser.add_argument("-b", type=str, required=False, default='BLOSUM62')
-    parser.add_argument("-t", type=int, required=False, default=5)
+    parser.add_argument("-o", type=str, required=True, help="Output file name")
+    parser.add_argument("-q", type=argparse.FileType("r"), required=False, default='query.fa', help="Path to query file")
+    parser.add_argument("-d", type=argparse.FileType("r"), required=False, default='database.fa', help="Path to database file")
+    parser.add_argument("-m", type=int, required=False, default=1, help="Match score")
+    parser.add_argument("-s", type=int, required=False, default=-2, help="Mismatch score")
+    parser.add_argument("-i", type=int, required=False, default=-2, help="Indel score")
+    parser.add_argument("-a", type=str, required=False, default='locAL', help="Alignment type: locAL (custom), biopy (Biopython), or ska (sci-kit Bio)")
+    parser.add_argument("-b", type=str, required=False, default='BLOSUM62', help="Use BLOSUM62 substitution matrix (for Biopython and Scikit-bio)")
+    parser.add_argument("-t", type=int, required=False, default=5, help="Score threshold (only output hits with score ≥ this value)")
     args = parser.parse_args()
 
     hits = generate_hits.main(l)
@@ -46,14 +46,14 @@ def output_alignments(hits, l, args):
             elif args.a == 'biopy':
                 output = biopy.align(q[i1:i2 + 1], db[j1:j2 + 1], args.b)
                 if output[0] >= args.t:
-                    f.write(output[1] + '\t' + str(output[0]) + "\n")
+                    f.write(str(output[1]) + '\t' + str(output[0]) + "\n")
 
             elif args.a == 'scikit':
                 output = ska.sci_kit_align(q[i1:i2 + 1], db[j1:j2 + 1], args.m, args.i, substitution_matrix=args.b)
 
-            elif args.a == 'mafft':
-                mafft_local(q[i1:i2 + 1], "query.fa")
-                mafft_local(db[j1:j2 + 1], "database.fa")
+            # elif args.a == 'mafft':
+            #     mafft_local(q[i1:i2 + 1], "query.fa")
+            #     mafft_local(db[j1:j2 + 1], "database.fa")
 
 def get_sequence(file):
     return file.readlines()[1].strip()

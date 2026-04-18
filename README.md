@@ -1,6 +1,6 @@
 # Viral Sequence Alignment Search Tool
 
-A robust framework for performing sequence alignment between query COVID sequences and reference databases. Identifies potential hits and performs detailed local or global alignments using multiple backend implementations.
+A robust framework for performing sequence alignment between query COVID sequences and reference databases. Identifies potential hits and performs detailed local or global alignments using multiple backend implementations. Returns all alignments with a higher score than T.
 
 ## Features
 
@@ -54,6 +54,7 @@ python search.py [flags]
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
+| `-o` | str | N/A | Output file name |
 | `-q` | File | `query.fa` | Path to query FASTA file |
 | `-d` | File | `database.fa` | Path to database FASTA file |
 | `-m` | Int | `1` | Match score (reward for matching characters) |
