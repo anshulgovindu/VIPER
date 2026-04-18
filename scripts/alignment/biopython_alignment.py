@@ -12,9 +12,8 @@ def align(target, query, sub_matrix_name="BLOSUM62"):
 
     top_alignment = alignments[0]
     top_score = top_alignment.score
-    e_value = e_val(top_score, len(query), len(target))
 
-    return (top_score, top_alignment, e_value) # returns top score, top alignment, and e_value
+    return (top_score, top_alignment) # returns top score, top alignment
 
 def e_val(score, query_len, db_len, K=0.13, lam=0.318):
 
