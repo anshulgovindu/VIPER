@@ -32,15 +32,6 @@ pip install -r requirements.txt
 ├── query.fa                        # Example query FASTA file
 ├── data/                           # Input data files
 │   └── spikeprot0723/             # Sample spike protein database
-├── old/                            # Core implementation
-│   ├── align_sequences.py         # Main pipeline orchestrator
-│   ├── alignment.py               # Alignment algorithms
-│   ├── fasta_parser.py            # FASTA file handling
-│   ├── seed_filter.py             # K-mer pre-filtering
-│   ├── results_handler.py         # Result formatting and output
-│   ├── constants_and_utils.py     # Utilities and scoring matrices
-│   ├── ARCHITECTURE.md            # Architecture documentation
-│   └── IMPLEMENTATION_GUIDE.md    # Implementation notes
 ├── scripts/                        # Helper scripts
 │   ├── search.py                  # Search interface
 │   ├── alignment/                 # Alignment backend implementations
@@ -56,7 +47,7 @@ pip install -r requirements.txt
 ### Basic Command
 
 ```bash
-python old/align_sequences.py [flags]
+python search.py [flags]
 ```
 
 ### Flags
@@ -76,16 +67,11 @@ python old/align_sequences.py [flags]
 
 ```bash
 # Default alignment with custom backend
-python old/align_sequences.py -q query.fa -d data/spikeprot0723/spikeprot0723.fasta
+python search.py -q query.fa -d data/spikeprot0723/spikeprot0723.fasta
 
 # Using Biopython with BLOSUM62 matrix and higher threshold
-python old/align_sequences.py -q query.fa -d database.fa -a biopy -b -t 50
+python search.py -q query.fa -d database.fa -a biopy -b -t 50
 
 # Custom scoring parameters
-python old/align_sequences.py -q query.fa -d database.fa -m 2 -s -3 -i -2 -t 100
+python search.py -q query.fa -d database.fa -m 2 -s -3 -i -2 -t 100
 ```
-
-## Documentation
-
-- **[ARCHITECTURE.md](old/ARCHITECTURE.md)** — Module overview, design patterns, and algorithm descriptions
-- **[IMPLEMENTATION_GUIDE.md](old/IMPLEMENTATION_GUIDE.md)** — Development strategy and implementation notes
