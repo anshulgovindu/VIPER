@@ -1,4 +1,4 @@
-# Viral Sequence Alignment Search Tool (VLAST)
+# Viral Local Alignment Search Tool (VLAST)
 
 A robust framework for performing sequence alignment between query COVID sequences and reference database (GISAID EpiCOV). Identifies potential hits and performs local alignments using multiple backend implementations. Returns all alignments with a higher score than threshold t.
 
