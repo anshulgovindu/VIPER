@@ -66,10 +66,10 @@ python search.py [flags]
 
 ### Example Usage
 
-query.fa: sample query sequence in database.fa (expected to return exact match)
-query2.fa: sample query sequence NOT in database.fa
-database.fa: sample database (10 sequences) for testing purposes, which is much smaller than the complete GISAID one (~17 million sequences)
-- the complete database is too large to upload to repository, and needs to be extracted from GISAID by the user (also for legal reasons)
+- query.fa: sample query sequence in database.fa (expected to return exact match)
+- query2.fa: sample query sequence NOT in database.fa
+- database.fa: sample database (10 sequences) for testing purposes, which is much smaller than the complete GISAID one (~17 million sequences)
+  - the complete database is too large to upload to repository, and needs to be extracted from GISAID by the user (also for legal reasons)
 
 ```bash
 # Default alignment with custom backend
