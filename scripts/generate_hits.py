@@ -1,10 +1,10 @@
-def main(l):
-    clusters = make_clusters(l)
+def main(l, o):
+    clusters = make_clusters(l, o)
     hits = clusters_to_hits(clusters)
     return hits
     
-def make_clusters(l):
-    pairs = get_indices(l)
+def make_clusters(l, o):
+    pairs = get_indices(o, l)
     visited = set()
     clusters = []
 
@@ -29,8 +29,8 @@ def make_clusters(l):
             clusters.append(cluster)
     return clusters
 
-def get_indices(l):
-    with open("results/match" + str(l) + ".csv", "r") as f:
+def get_indices(o, l):
+    with open("results/match_" + o + "_" + str(l) + ".txt", "r") as f:
         lines = f.readlines()
     pairs = []
     for line in lines:

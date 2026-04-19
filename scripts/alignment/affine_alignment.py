@@ -2,7 +2,7 @@ import skbio
 from skbio import Protein
 from skbio.alignment import local_pairwise_align_protein
 
-def sci_kit_align(file1, file2, gap_open_penalty=11, gap_extend_penalty=1, substitution_matrix=None):
+def affine_align(file1, file2, gap_open_penalty=11, gap_extend_penalty=1, substitution_matrix=None):
     """
     Aligns two protein sequences with given penalties.
 

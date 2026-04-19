@@ -1,10 +1,10 @@
-# Viral Sequence Alignment Search Tool
+# Viral Local Sequence Alignment Search Tool (VLAST)
 
-A robust framework for performing sequence alignment between query COVID sequences and reference databases. Identifies potential hits and performs detailed local or global alignments using multiple backend implementations. Returns all alignments with a higher score than T.
+A robust framework for performing sequence alignment between query COVID sequences and reference database (GISAID EpiCOV). Identifies potential hits and performs local alignments using multiple backend implementations. Returns all alignments with a higher score than threshold t.
 
 ## Features
 
-- Multiple alignment backends: custom local alignment, Biopython, Scikit-bio, and MAFFT
+- Multiple alignment backends: custom-built local alignment, Biopython, Scikit-bio
 - Configurable scoring parameters (match, substitution, indel penalties)
 - Threshold-based filtering for alignment results
 - Automated hit generation and sequence parsing
@@ -13,8 +13,7 @@ A robust framework for performing sequence alignment between query COVID sequenc
 ## Requirements
 
 - Python 3.11+
-- Standard library (no required external dependencies for core functionality)
-- Optional: `biopython`, `scikit-bio`, `mafft` for additional alignment backends
+- `numpy`, `biopython`, `scikit-bio` for additional alignment backends
 
 ## Installation
 
@@ -57,6 +56,7 @@ python search.py [flags]
 | `-o` | str | N/A | Output file name |
 | `-q` | File | `query.fa` | Path to query FASTA file |
 | `-d` | File | `database.fa` | Path to database FASTA file |
+| `-l` | Int | `3` | L-mer length for seed-and-extend |
 | `-m` | Int | `1` | Match score (reward for matching characters) |
 | `-s` | Int | `-2` | Substitution penalty (mismatch penalty) |
 | `-i` | Int | `-2` | Indel penalty (insertion/deletion penalty) |
@@ -64,11 +64,16 @@ python search.py [flags]
 | `-b` | Flag | — | Use BLOSUM62 substitution matrix (for Biopython and Scikit-bio) |
 | `-t` | Int | `5` | Score threshold (only output hits with score ≥ this value) |
 
-### Examples
+### Example Usage
+
+query.fa: sample query sequence in database.fa (expected to return exact match)
+query2.fa: sample query sequence NOT in database.fa
+database.fa: sample database (10 sequences) for testing purposes, which is much smaller than the complete GISAID one (~17 million sequences)
+- the complete database is too large to upload to repository, and will needs to be extracted by the user (also for legal reasons)
 
 ```bash
 # Default alignment with custom backend
-python search.py -q query.fa -d data/spikeprot0723/spikeprot0723.fasta
+python search.py -q query.fa -d database.fa
 
 # Using Biopython with BLOSUM62 matrix and higher threshold
 python search.py -q query.fa -d database.fa -a biopy -b -t 50

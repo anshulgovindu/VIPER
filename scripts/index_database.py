@@ -1,5 +1,5 @@
-def main(l):
-    db = read_sequence("database.fa")
+def main(l, o, db_file="database.fa"):
+    db = read_sequence(db_file)
     index = {}
 
     # Store the indices of every lmer
@@ -11,18 +11,14 @@ def main(l):
             index[lmer] = [j]
 
     # Output index for each l
-    output_index(index, l)
+    output_index(index, l, o)
 
 def read_sequence(file):
     with open(file, "r") as f:
-        return f.readlines()[1].strip()
+        return "".join(line.strip() for line in f.readlines() if not line.startswith(">"))
 
-def output_index(index, l):
-    with open("results/index" + str(l) + ".txt", "w") as f:
+def output_index(index, l, o):
+    with open("results/index_" + o + "_" + str(l) + ".txt", "w") as f:
         for lmer in sorted(index.keys()):
             positions = ",".join(map(str, index[lmer]))
             f.write(f"{lmer}\t{positions}\n")
-
-if __name__ == "__main__":    
-    for l in [3]:
-        main(l)
