@@ -53,15 +53,15 @@ python search.py [flags]
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `-o` | str | N/A | Output file name |
+| `-o` | Str | N/A | Output file name |
 | `-q` | File | `query.fa` | Path to query FASTA file |
 | `-d` | File | `database.fa` | Path to database FASTA file |
 | `-l` | Int | `3` | L-mer length for seed-and-extend |
 | `-m` | Int | `1` | Match score (reward for matching characters) |
 | `-s` | Int | `-2` | Substitution penalty (mismatch penalty) |
 | `-i` | Int | `-2` | Indel penalty (insertion/deletion penalty) |
-| `-a` | String | `local` | Alignment backend: `local` (custom), `biopy` (Biopython), or `ska` (Scikit-bio) |
-| `-b` | Flag | — | Use BLOSUM62 substitution matrix (for Biopython and Scikit-bio) |
+| `-a` | Str | `local` | Alignment backend: `local` (custom), `biopy` (Biopython), or `ska` (Scikit-bio) |
+| `-b` | Str | `BLOSUM62` | Substitution matrix (for biopy and affine). Uses BLOSUM62 by default |
 | `-t` | Int | `5` | Score threshold (only output hits with score ≥ this value) |
 
 ### Example Usage

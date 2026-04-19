@@ -16,7 +16,7 @@ def main():
     parser.add_argument("-s", type=int, required=False, default=-2, help="Mismatch score, or gap-extend score for affine alignment")
     parser.add_argument("-i", type=int, required=False, default=-2, help="Indel score")
     parser.add_argument("-a", type=str, required=False, default='default', help="Alignment type: default (custom-built), biopy (Biopython), or affine (affine alignment)")
-    parser.add_argument("-b", type=str, required=False, default='BLOSUM62', help="Use BLOSUM62 substitution matrix (for Biopython and Scikit-bio)")
+    parser.add_argument("-b", type=str, required=False, default='BLOSUM62', help="Specify substitution matrix (for biopy and affine). Uses BLOSUM62 by default")
     parser.add_argument("-t", type=int, required=False, default=5, help="Score threshold (only output hits with score ≥ this value)")
     args = parser.parse_args()
     
