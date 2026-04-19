@@ -1,3 +1,5 @@
+TOL = 1
+
 def main(l, o):
     clusters = make_clusters(l, o)
     hits = clusters_to_hits(clusters)
@@ -19,7 +21,7 @@ def make_clusters(l, o):
                 cluster.append(curr)
                 for i, j in pairs:
                     if (i, j) not in visited:
-                        if abs(curr[0] - i) <= l + 10 and abs(curr[1] - j) <= l + 10:
+                        if abs(curr[0] - i) <= l + TOL and abs(curr[1] - j) <= l + TOL:
                             stack.append((i, j))
         return cluster
 
