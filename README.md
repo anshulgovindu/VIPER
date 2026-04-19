@@ -1,4 +1,4 @@
-# Viral Local Sequence Alignment Search Tool (VLAST)
+# Viral Sequence Alignment Search Tool (VLAST)
 
 A robust framework for performing sequence alignment between query COVID sequences and reference database (GISAID EpiCOV). Identifies potential hits and performs local alignments using multiple backend implementations. Returns all alignments with a higher score than threshold t.
 
@@ -69,7 +69,7 @@ python search.py [flags]
 query.fa: sample query sequence in database.fa (expected to return exact match)
 query2.fa: sample query sequence NOT in database.fa
 database.fa: sample database (10 sequences) for testing purposes, which is much smaller than the complete GISAID one (~17 million sequences)
-- the complete database is too large to upload to repository, and will needs to be extracted by the user (also for legal reasons)
+- the complete database is too large to upload to repository, and needs to be extracted from GISAID by the user (also for legal reasons)
 
 ```bash
 # Default alignment with custom backend
