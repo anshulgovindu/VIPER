@@ -1,6 +1,7 @@
-# Viral Identification via Pairwise alignER (VIPER)
+# VIPER
+**V**iral **I**dentification via **P**airwise align**ER**
 
-A robust framework for performing sequence alignment between query COVID sequences and reference database (GISAID EpiCOV). Identifies potential hits and performs local alignments using multiple backend implementations. Returns all alignments with a higher score than threshold t.
+> *A robust framework for performing sequence alignment between query COVID sequences and reference database (GISAID EpiCOV). Identifies potential hits and performs local alignments using multiple backend implementations. Returns all alignments with a higher score than threshold t.*
 
 ## Features
 
